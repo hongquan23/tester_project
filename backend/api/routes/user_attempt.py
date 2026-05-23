@@ -142,6 +142,10 @@ def get_history(user_id: int, db: Session = Depends(get_db)):
     return history
 
 
+from datetime import datetime, timedelta
+from fastapi import HTTPException, Depends
+from sqlalchemy.orm import Session
+
 @router.get("/user/{user_id}/session-detail")
 def get_session_detail(
     user_id: int,
@@ -150,32 +154,117 @@ def get_session_detail(
     db: Session = Depends(get_db)
 ):
     """Trả về chi tiết câu hỏi + đáp án của 1 phiên làm cụ thể."""
+
     try:
         target_dt = datetime.fromisoformat(attempted_at)
     except ValueError:
-        raise HTTPException(status_code=400, detail="Invalid attempted_at format")
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid attempted_at format"
+        )
 
+    # tránh lỗi microsecond exact match
+    start_dt = target_dt.replace(microsecond=0)
+    end_dt = start_dt + timedelta(seconds=1)
+
+    # 1 query
     attempts = (
         db.query(UserAttempt)
         .filter(
             UserAttempt.user_id == user_id,
             UserAttempt.section_id == section_id,
-            UserAttempt.created_at == target_dt,
+            UserAttempt.created_at >= start_dt,
+            UserAttempt.created_at < end_dt,
         )
         .all()
     )
 
+    if not attempts:
+        return []
+
+    # lấy toàn bộ question_ids
+    question_ids = list({
+        a.question_id
+        for a in attempts
+    })
+
+    # 2 query
+    question_bases = (
+        db.query(QuestionBase)
+        .filter(QuestionBase.id.in_(question_ids))
+        .all()
+    )
+
+    qb_map = {
+        qb.id: qb
+        for qb in question_bases
+    }
+
+    # gom listening & reading ids
+    listening_ids = []
+    reading_ids = []
+
+    for qb in question_bases:
+        if qb.listening_question_id:
+            listening_ids.append(
+                qb.listening_question_id
+            )
+
+        if qb.reading_question_id:
+            reading_ids.append(
+                qb.reading_question_id
+            )
+
+    # 3 query
+    listening_questions = (
+        db.query(ListeningQuestion)
+        .filter(
+            ListeningQuestion.id.in_(listening_ids)
+        )
+        .all()
+        if listening_ids else []
+    )
+
+    # 4 query
+    reading_questions = (
+        db.query(ReadingQuestion)
+        .filter(
+            ReadingQuestion.id.in_(reading_ids)
+        )
+        .all()
+        if reading_ids else []
+    )
+
+    # map lookup O(1)
+    listening_map = {
+        q.id: q
+        for q in listening_questions
+    }
+
+    reading_map = {
+        q.id: q
+        for q in reading_questions
+    }
+
     results = []
+
     for attempt in attempts:
-        qb = db.query(QuestionBase).filter(QuestionBase.id == attempt.question_id).first()
+
+        qb = qb_map.get(
+            attempt.question_id
+        )
+
         if not qb:
             continue
 
-        q_data = {}
+        q_data = None
+
+        # listening
         if qb.listening_question_id:
-            lq = db.query(ListeningQuestion).filter(
-                ListeningQuestion.id == qb.listening_question_id
-            ).first()
+            lq = listening_map.get(
+                qb.listening_question_id
+            )
+
             if lq:
                 q_data = {
                     "question_id": lq.id,
@@ -191,10 +280,13 @@ def get_session_detail(
                     "option_d": lq.option_d,
                     "correct_answer": lq.correct_answer,
                 }
+
+        # reading
         elif qb.reading_question_id:
-            rq = db.query(ReadingQuestion).filter(
-                ReadingQuestion.id == qb.reading_question_id
-            ).first()
+            rq = reading_map.get(
+                qb.reading_question_id
+            )
+
             if rq:
                 q_data = {
                     "question_id": rq.id,
@@ -218,7 +310,11 @@ def get_session_detail(
                 "is_correct": attempt.is_correct,
             })
 
-    results.sort(key=lambda r: r.get("question_number") or 0)
+    results.sort(
+        key=lambda r:
+        r.get("question_number") or 0
+    )
+
     return results
 
 
