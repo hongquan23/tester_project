@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./login.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { login, register, forgotPassword, verifyResetCode, resetPassword } from "../api";
+import { login, register } from "../api";
 import { jwtDecode } from "jwt-decode";
 
 const PasswordInput = ({ value, onChange, placeholder, show, toggleShow }) => (
@@ -26,12 +26,9 @@ const AuthForm = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("MEMBER");
 
-  // forgotStep: 0 = tắt, 1 = nhập email, 2 = nhập mã OTP, 3 = nhập mật khẩu mới
-  const [forgotStep, setForgotStep] = useState(0);
+  const [forgotMode, setForgotMode] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
-  const [resetCode, setResetCode] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [forgotLoading, setForgotLoading] = useState(false);
 
   const [showPasswordSignUp, setShowPasswordSignUp] = useState(false);
   const [showPasswordSignIn, setShowPasswordSignIn] = useState(false);
@@ -87,6 +84,9 @@ const AuthForm = () => {
       const container = document.getElementById("loginContainer");
       container.classList.remove(styles.rightPanelActive);
 
+      // 🔹 đảm bảo quay về mode login
+      setForgotMode(false);
+      setRole("MEMBER");
       setShowPasswordSignIn(false);
 
       // 👉 email giữ nguyên để user khỏi nhập lại
@@ -139,58 +139,20 @@ const handleSignIn = async (e) => {
   }
 };
   // =========================
-  // 🔹 FORGOT PASSWORD
+  // 🔹 FORGOT PASSWORD (MOCK)
   // =========================
-  const resetForgotState = () => {
-    setForgotStep(0);
-    setResetEmail("");
-    setResetCode("");
-    setNewPassword("");
-  };
-
-  const handleSendCode = async (e) => {
+  const handleForgotPassword = (e) => {
     e.preventDefault();
-    setForgotLoading(true);
-    try {
-      await forgotPassword({ email: resetEmail });
-      alert("Mã xác nhận đã được gửi đến email của bạn!");
-      setForgotStep(2);
-    } catch (err) {
-      alert(err.response?.data?.detail || "Không tìm thấy email này trong hệ thống");
-    } finally {
-      setForgotLoading(false);
-    }
-  };
 
-  const handleVerifyCode = async (e) => {
-    e.preventDefault();
-    setForgotLoading(true);
-    try {
-      await verifyResetCode({ email: resetEmail, code: resetCode });
-      setForgotStep(3);
-    } catch (err) {
-      alert(err.response?.data?.detail || "Mã xác nhận không đúng hoặc đã hết hạn");
-    } finally {
-      setForgotLoading(false);
-    }
-  };
-
-  const handleResetPassword = async (e) => {
-    e.preventDefault();
     if (newPassword.length < 8) {
       alert("Mật khẩu mới phải có ít nhất 8 ký tự!");
       return;
     }
-    setForgotLoading(true);
-    try {
-      await resetPassword({ email: resetEmail, code: resetCode, new_password: newPassword });
-      alert("Đặt lại mật khẩu thành công! Vui lòng đăng nhập lại.");
-      resetForgotState();
-    } catch (err) {
-      alert(err.response?.data?.detail || "Đặt lại mật khẩu thất bại");
-    } finally {
-      setForgotLoading(false);
-    }
+
+    alert("Khôi phục mật khẩu (frontend demo)");
+    setForgotMode(false);
+    setResetEmail("");
+    setNewPassword("");
   };
 
   return (
@@ -243,7 +205,7 @@ const handleSignIn = async (e) => {
 
         {/* ================= SIGN IN ================= */}
         <div className={`${styles.formContainer} ${styles.signInContainer}`}>
-          {forgotStep === 0 && (
+          {!forgotMode ? (
             <form onSubmit={handleSignIn}>
               <h1>Sign in</h1>
 
@@ -260,7 +222,9 @@ const handleSignIn = async (e) => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 show={showPasswordSignIn}
-                toggleShow={() => setShowPasswordSignIn(!showPasswordSignIn)}
+                toggleShow={() =>
+                  setShowPasswordSignIn(!showPasswordSignIn)
+                }
               />
 
               <button type="submit">Sign In</button>
@@ -268,7 +232,7 @@ const handleSignIn = async (e) => {
               <p style={{ marginTop: 10 }}>
                 <button
                   type="button"
-                  onClick={() => setForgotStep(1)}
+                  onClick={() => setForgotMode(true)}
                   style={{
                     border: "none",
                     background: "none",
@@ -281,88 +245,39 @@ const handleSignIn = async (e) => {
                 </button>
               </p>
             </form>
-          )}
-
-          {/* BƯỚC 1: Nhập email */}
-          {forgotStep === 1 && (
-            <form onSubmit={handleSendCode}>
-              <h1>Quên mật khẩu</h1>
-              <p style={{ fontSize: 13, color: "#555", marginBottom: 12 }}>
-                Nhập email tài khoản của bạn, chúng tôi sẽ gửi mã xác nhận 6 số.
-              </p>
+          ) : (
+            <form onSubmit={handleForgotPassword}>
+              <h1>Reset Password</h1>
 
               <input
                 type="email"
-                placeholder="Email của bạn"
+                placeholder="Email"
                 value={resetEmail}
                 onChange={(e) => setResetEmail(e.target.value)}
                 required
               />
 
-              <button type="submit" disabled={forgotLoading}>
-                {forgotLoading ? "Đang gửi..." : "Gửi mã xác nhận"}
-              </button>
-
-              <button
-                type="button"
-                onClick={resetForgotState}
-                style={{ border: "none", background: "none", color: "blue", marginTop: 10, cursor: "pointer" }}
-              >
-                Quay lại đăng nhập
-              </button>
-            </form>
-          )}
-
-          {/* BƯỚC 2: Nhập mã 6 số */}
-          {forgotStep === 2 && (
-            <form onSubmit={handleVerifyCode}>
-              <h1>Nhập mã xác nhận</h1>
-              <p style={{ fontSize: 13, color: "#555", marginBottom: 12 }}>
-                Mã 6 số đã được gửi đến <strong>{resetEmail}</strong>. Mã có hiệu lực trong 10 phút.
-              </p>
-
-              <input
-                type="text"
-                placeholder="Nhập mã 6 số"
-                value={resetCode}
-                onChange={(e) => setResetCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                maxLength={6}
-                style={{ letterSpacing: 6, fontSize: 22, textAlign: "center" }}
-                required
-              />
-
-              <button type="submit" disabled={forgotLoading || resetCode.length < 6}>
-                {forgotLoading ? "Đang xác nhận..." : "Xác nhận mã"}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setForgotStep(1)}
-                style={{ border: "none", background: "none", color: "blue", marginTop: 10, cursor: "pointer" }}
-              >
-                Gửi lại mã
-              </button>
-            </form>
-          )}
-
-          {/* BƯỚC 3: Nhập mật khẩu mới */}
-          {forgotStep === 3 && (
-            <form onSubmit={handleResetPassword}>
-              <h1>Mật khẩu mới</h1>
-              <p style={{ fontSize: 13, color: "#555", marginBottom: 12 }}>
-                Nhập mật khẩu mới cho tài khoản <strong>{resetEmail}</strong>.
-              </p>
-
               <PasswordInput
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Mật khẩu mới (tối thiểu 8 ký tự)"
+                placeholder="New Password"
                 show={showNewPassword}
                 toggleShow={() => setShowNewPassword(!showNewPassword)}
               />
 
-              <button type="submit" disabled={forgotLoading}>
-                {forgotLoading ? "Đang lưu..." : "Đặt lại mật khẩu"}
+              <button type="submit">Update Password</button>
+
+              <button
+                type="button"
+                onClick={() => setForgotMode(false)}
+                style={{
+                  border: "none",
+                  background: "none",
+                  color: "blue",
+                  marginTop: 10,
+                }}
+              >
+                Back to Sign In
               </button>
             </form>
           )}
