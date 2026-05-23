@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── BASE ── */
+.loginWrapper {
+  background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 40%, #ddd6fe 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* chấm trang trí nền */
+.loginWrapper::before {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -120px;
+  left: -100px;
+  pointer-events: none;
+}
+
+.loginWrapper::after {
+  content: '';
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -80px;
+  right: -80px;
+  pointer-events: none;
+}
+
+.loginWrapper * {
+  box-sizing: border-box;
+}
+
+/* ── BACK LINK ── */
+.loginWrapper h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+.loginWrapper p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.loginWrapper span:not(.brandName):not(.brandIcon) {
+  font-size: 12px;
+}
+
+.loginWrapper a {
+  color: #4f46e5;
+  font-size: 0.82rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loginWrapper a:hover {
+  text-decoration: underline;
+}
+
+/* ── BUTTONS ── */
+.loginWrapper button {
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 14px 44px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.55), 0 2px 6px rgba(0,0,0,0.12);
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.loginWrapper button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.65), 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.loginWrapper button:active {
+  transform: scale(0.97);
+}
+
+.loginWrapper button:focus {
+  outline: none;
+}
+
+/* Nút ghost trên overlay — nền trắng chữ indigo để nổi bật */
+.ghost {
+  background: #fff !important;
+  border: none !important;
+  color: #4f46e5 !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
+  width: auto !important;
+  margin-top: 0 !important;
+  padding: 12px 36px !important;
+}
+
+.ghost:hover {
+  background: #f5f3ff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
+}
+
+/* ── FORMS ── */
+.loginWrapper form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 44px;
+  height: 100%;
+  text-align: center;
+  gap: 0;
+}
+
+/* ── INPUTS ── */
+.loginWrapper input,
+.loginWrapper select {
+  background-color: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  padding: 12px 16px;
+  margin: 6px 0;
+  width: 100%;
+  font-size: 0.875rem;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.loginWrapper input::placeholder {
+  color: #94a3b8;
+}
+
+.loginWrapper input:focus,
+.loginWrapper select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  background-color: #fff;
+}
+
+.loginWrapper select {
+  cursor: not-allowed;
+  color: #94a3b8;
+}
+
+/* ── CONTAINER ── */
+.loginContainer {
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  width: 820px;
+  max-width: 96vw;
+  min-height: 520px;
+}
+
+/* ── SHARED PANEL ── */
+.formContainer {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.signInContainer {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.loginContainer.rightPanelActive .signInContainer {
+  transform: translateX(100%);
+}
+
+.signUpContainer {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.loginContainer.rightPanelActive .signUpContainer {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+/* ── OVERLAY ── */
+.overlayContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.loginContainer.rightPanelActive .overlayContainer {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(135deg, #4338ca 0%, #7c3aed 60%, #a855f7 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.loginContainer.rightPanelActive .overlay {
+  transform: translateX(50%);
+}
+
+.overlayPanel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 48px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out;
+  gap: 12px;
+}
+
+.overlayPanel h1 {
+  color: #fff !important;
+  font-size: 1.6rem !important;
+}
+
+.overlayPanel p {
+  color: rgba(255,255,255,0.82) !important;
+  font-size: 0.88rem !important;
+  margin: 0 !important;
+}
+
+.overlayLeft {
+  transform: translateX(-20%);
+}
+
+.loginContainer.rightPanelActive .overlayLeft {
+  transform: translateX(0);
+}
+
+.overlayRight {
+  right: 0;
+  transform: translateX(0);
+}
+
+.loginContainer.rightPanelActive .overlayRight {
+  transform: translateX(20%);
+}
+
+/* ── PASSWORD FIELD ── */
+.passwordContainer {
+  position: relative;
+  width: 100%;
+  margin: 6px 0;
+}
+
+.passwordContainer input {
+  width: 100%;
+  padding: 12px 44px 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  margin: 0;
+}
+
+.passwordContainer input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  background-color: #fff;
+}
+
+.passwordContainer input::placeholder {
+  color: #94a3b8;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 15px;
+  color: #94a3b8;
+  transition: color 0.15s;
+}
+
+.togglePassword:hover {
+  color: #4f46e5;
+}
+
+/* ── TOP BRAND ── */
+.topBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.brandIcon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.brandName {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #3730a3;
+  letter-spacing: -1px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 14px 0;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
