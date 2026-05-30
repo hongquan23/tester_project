@@ -7,7 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:black-box": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box --verbose",
+    "test:black-box:auth": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/auth.test.js --verbose",
+    "test:black-box:contest": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/contest.test.js --verbose",
+    "test:black-box:dashboard": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/dashboard.test.js --verbose",
+    "test:black-box:courses": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/courses.test.js --verbose",
+    "test:black-box:all": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box --maxWorkers=1"
   },
   "dependencies": {
     "axios": "^1.5.1",
@@ -20,16 +26,23 @@
     "router": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.29.7",
     "@eslint/js": "^9.39.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "autoprefixer": "^10.4.23",
+    "babel-jest": "^30.4.1",
+    "chromedriver": "^148.0.4",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "jest": "^30.4.2",
     "postcss": "^8.5.6",
+    "selenium-webdriver": "^4.44.0",
     "tailwindcss": "^4.1.18",
     "vite": "^7.2.4"
   }
