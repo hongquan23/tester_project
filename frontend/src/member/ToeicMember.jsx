@@ -40,7 +40,7 @@ const mapAPIQuestionToUIFormat = (apiQuestion, skill, part) => {
     let prepTime = 30;
     let responseTime = 30;
 
-    switch(Number(part)) {
+    switch(Number(apiQuestion.part || part)) {
       case 1:
         questionType = 'Read a Short Text Aloud';
         prepTime = 25;
@@ -448,7 +448,10 @@ const fetchTests = async () => {
       } catch (e) { console.error('Lỗi load reading section:', e); }
     }
 
-    setSpeakingTestsData(Object.values(groupedSpeaking));
+    setSpeakingTestsData(Object.values(groupedSpeaking).map(test => ({
+      ...test,
+      questions: [...test.questions].sort((a, b) => (a.part || 0) - (b.part || 0) || a.id - b.id)
+    })));
     setWritingTestsData(Object.values(groupedWriting));
     setListeningTestsData(Object.values(groupedListening));
     setReadingTestsData(Object.values(groupedReading));
@@ -2118,7 +2121,7 @@ const renderQuestionResult = () => {
   } else if (activeView === 'exam') {
     viewContent = renderExam();
   } else if (activeView === 'profile') {
-    viewContent = <Profile currentUser={currentUser} />;
+    viewContent = <Profile currentUser={currentUser} onUpdateUser={setCurrentUser} />;
   } else if (activeView === 'history') {
     viewContent = (
       <History

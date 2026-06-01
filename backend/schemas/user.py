@@ -21,11 +21,11 @@ class Token(BaseModel):
     role: str
 
 class UpdateName(BaseModel):
-    name: str 
+    name: str = Field(min_length=1, strip_whitespace=True)
 
 class ChangePassword(BaseModel):
     current_password: str
-    new_password: str
+    new_password: str = Field(min_length=8)
 
 class UserOut(UserBase):
     id: int
