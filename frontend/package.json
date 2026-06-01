@@ -13,7 +13,14 @@
     "test:black-box:contest": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/contest.test.js --verbose",
     "test:black-box:dashboard": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/dashboard.test.js --verbose",
     "test:black-box:courses": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/courses.test.js --verbose",
-    "test:black-box:all": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box --maxWorkers=1"
+    "test:black-box:all": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box --maxWorkers=1",
+    "test:white-box": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box --verbose --maxWorkers=1",
+    "test:white-box:routing": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box/01-routing --verbose",
+    "test:white-box:auth": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box/02-auth --verbose",
+    "test:white-box:api": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box/03-api --verbose",
+    "test:white-box:exam": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box/04-exam --verbose --maxWorkers=1",
+    "test:white-box:admin": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box/05-admin --verbose",
+    "test:white-box:landing": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/white-box/06-landing --verbose"
   },
   "dependencies": {
     "axios": "^1.5.1",
