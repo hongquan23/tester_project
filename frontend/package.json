@@ -12,9 +12,7 @@
     "test:black-box:auth": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/auth.test.js --verbose",
     "test:black-box:contest": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/contest.test.js --verbose",
     "test:black-box:dashboard": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/dashboard.test.js --verbose",
-    "test:black-box:courses": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/courses.test.js --verbose",
-    "test:black-box:all": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box --maxWorkers=1"
-  },
+    "test:black-box:exam": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js test/black-box/exam.test.js --verbose"},
   "dependencies": {
     "axios": "^1.5.1",
     "jwt-decode": "^4.0.0",
