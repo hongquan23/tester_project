@@ -1,0 +1,1463 @@
+{
+  "audio_url": {
+    "url": "C:/WORKSPACE/fastAPI/exam_management/backend/audio/Test03.mp3"
+  },
+  "parts": [
+    {
+      "part_number": 1,
+      "title": "Part 1 – Photographs",
+      "directions": "For each question in this part, you will hear four statements about a picture in your test book. When you hear the statements, you must select the one statement that best describes what you see in the picture. Then find the number of the question on your answer sheet and mark your answer. The statements will not be printed in your test book and will be spoken only one time.",
+      "questions": [
+        {
+          "question_number": 1,
+          "options": {
+            "A": "He's parking a truck.",
+            "B": "He's lifting some furniture.",
+            "C": "He's starting an engine.",
+            "D": "He's driving a car."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 2,
+          "options": {
+            "A": "Some curtains have been closed.",
+            "B": "Some jackets have been laid on a chair.",
+            "C": "Some people are gathered around a desk.",
+            "D": "Someone is turning on a lamp."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 3,
+          "options": {
+            "A": "One of the women is reaching into her bag.",
+            "B": "The women are waiting in a line.",
+            "C": "The man is leading a tour group.",
+            "D": "The man is opening a cash register."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 4,
+          "options": {
+            "A": "The man is bending over a bicycle.",
+            "B": "A wheel has been propped against a stack of bricks.",
+            "C": "The man is collecting some pieces of wood.",
+            "D": "A handrail is being installed."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 5,
+          "options": {
+            "A": "An armchair has been placed under a window.",
+            "B": "Some reading materials have fallen on the floor.",
+            "C": "Some flowers are being watered.",
+            "D": "Some picture frames are hanging on a wall."
+          },
+          "correct_answer": "D"
+        },
+        {
+          "question_number": 6,
+          "options": {
+            "A": "She's adjusting the height of an umbrella.",
+            "B": "She's inspecting the tires on a vending cart.",
+            "C": "There's a mobile food stand on a walkway.",
+            "D": "There are some cooking utensils on the ground."
+          },
+          "correct_answer": "C"
+        }
+      ]
+    },
+    {
+      "part_number": 2,
+      "title": "Part 2 – Question-Response",
+      "directions": "You will hear a question or statement and three responses spoken in English. They will not be printed in your test book and will be spoken only one time. Select the best response to the question or statement and mark the letter (A), (B), or (C) on your answer sheet.",
+      "questions": [
+        {
+          "question_number": 7,
+          "question": "Why was this afternoon's meeting canceled?",
+          "options": {
+            "A": "Room 206, I think.",
+            "B": "Because the manager is out of the office.",
+            "C": "Let's review the itinerary for our trip."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 8,
+          "question": "You use the company fitness center, don't you?",
+          "options": {
+            "A": "Yes, every now and then.",
+            "B": "Please center the text on the page.",
+            "C": "I think it fits you well."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 9,
+          "question": "Do you have the images from the graphics department?",
+          "options": {
+            "A": "OK, that won't be a problem.",
+            "B": "A high-definition camera.",
+            "C": "No, they're not ready yet."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 10,
+          "question": "When are you moving to your new office?",
+          "options": {
+            "A": "The office printer over there.",
+            "B": "The water bill is high this month.",
+            "C": "The schedule is being revised."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 11,
+          "question": "Would you like to sign up for the company retreat?",
+          "options": {
+            "A": "Sure, I'll write my name down.",
+            "B": "Twenty people, maximum.",
+            "C": "Can I replace the sign?"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 12,
+          "question": "How often do I have to submit my time sheet?",
+          "options": {
+            "A": "Five sheets of paper.",
+            "B": "You need to do it once a week.",
+            "C": "No, I don't usually wear a watch."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 13,
+          "question": "I can buy a monthly gym membership, right?",
+          "options": {
+            "A": "A very popular exercise routine.",
+            "B": "The exercise room is on your right.",
+            "C": "Yes, at the front desk."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 14,
+          "question": "Have you put price tags on all the clearance items?",
+          "options": {
+            "A": "Yes, everything's been labeled.",
+            "B": "It is a little cloudy.",
+            "C": "Where is your name tag?"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 15,
+          "question": "Don't we still need to change the newspaper layout?",
+          "options": {
+            "A": "Down the hall on your right.",
+            "B": "No, it's already been changed.",
+            "C": "A new computer program."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 16,
+          "question": "What's the total cost of the repair work?",
+          "options": {
+            "A": "It's free because of the warranty.",
+            "B": "I have some boxes you can use.",
+            "C": "In a couple of hours."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 17,
+          "question": "Where can I get a new filing cabinet?",
+          "options": {
+            "A": "All of the cabins have been rented.",
+            "B": "I'll put the tiles in the corner.",
+            "C": "All furniture requests must be approved first."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 18,
+          "question": "How do I reset my password?",
+          "options": {
+            "A": "By the end of the month.",
+            "B": "You should call the help desk.",
+            "C": "Thanks for setting the table."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 19,
+          "question": "Could you check to see if that monitor is plugged in?",
+          "options": {
+            "A": "I didn't send them yet.",
+            "B": "A longer power cord.",
+            "C": "Do you want me to check them all?"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 20,
+          "question": "Is the new inventory process more efficient?",
+          "options": {
+            "A": "It only took me an hour.",
+            "B": "Yes, she's new here.",
+            "C": "I'll have the fish."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 21,
+          "question": "Would you like some ice cream or cake for dessert?",
+          "options": {
+            "A": "Because I'm hungry.",
+            "B": "Yes, I liked it.",
+            "C": "I'm trying to avoid sugar."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 22,
+          "question": "Who's doing the product demonstration this afternoon?",
+          "options": {
+            "A": "That bus station is closed, sorry.",
+            "B": "I'm leaving for New York at lunchtime.",
+            "C": "Let me show you a few more."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 23,
+          "question": "Your presentation's being reviewed at today's managers' meeting.",
+          "options": {
+            "A": "I didn't have much time to complete it.",
+            "B": "Next slide, please.",
+            "C": "That movie had great reviews."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 24,
+          "question": "Don't you carry these shoes in red?",
+          "options": {
+            "A": "I'll lift from this end.",
+            "B": "There's a new shipment coming tomorrow.",
+            "C": "I have time to read it now."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 25,
+          "question": "Would you like to have lunch with the clients?",
+          "options": {
+            "A": "About a three-hour flight.",
+            "B": "The first stage of the project.",
+            "C": "Sure, we can go to the café downstairs."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 26,
+          "question": "How about hiring an event planner to organize the holiday party?",
+          "options": {
+            "A": "I think it's on the lower shelf.",
+            "B": "Sure, I'd love to attend.",
+            "C": "There's not much money in the budget."
+          },
+          "correct_answer": "C"
+        },
+        {
+          "question_number": 27,
+          "question": "Isn't that carmaker planning to start exporting electric cars?",
+          "options": {
+            "A": "Yes, I've heard that's the plan.",
+            "B": "A ticket to next year's car show.",
+            "C": "Congratulations on your promotion!"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 28,
+          "question": "David trained the interns to use the company database, didn't he?",
+          "options": {
+            "A": "Actually, it was Hillary.",
+            "B": "An internal audit.",
+            "C": "He's good company."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 29,
+          "question": "Who's responsible for researching the housing market in India?",
+          "options": {
+            "A": "The senior director is heading up that team.",
+            "B": "Every morning at ten o'clock.",
+            "C": "Yes, it's on Main Street."
+          },
+          "correct_answer": "A"
+        },
+        {
+          "question_number": 30,
+          "question": "Have you arranged a ride to take us to the convention center, or should I?",
+          "options": {
+            "A": "Unfortunately, there isn't an extra bag.",
+            "B": "I don't have the phone number for the taxi service.",
+            "C": "We've accepted credit cards before."
+          },
+          "correct_answer": "B"
+        },
+        {
+          "question_number": 31,
+          "question": "These purchases should have been entered on your expense report.",
+          "options": {
+            "A": "No thanks, I don't need anything from the store.",
+            "B": "The entrance is on Thirty-First Street.",
+            "C": "I thought I had until Friday to do that."
+          },
+          "correct_answer": "C"
+        }
+      ]
+    },
+    {
+      "part_number": 3,
+      "title": "Part 3 – Conversations",
+      "directions": "You will hear some conversations between two or more people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time.",
+      "conversations": [
+        {
+          "conversation_id": "C01",
+          "question_numbers": [
+            32,
+            33,
+            34
+          ],
+          "transcript": "W-Br: Hi, it's Martina from Accounting. I'd like to reserve the main conference room for a meeting I'll be leading on Friday with colleagues from our New York office. M-Cn: Sure, that shouldn't be a problem. What time is the meeting? W-Br: It's from nine to eleven A.M. M-Cn: OK – I'll block off that time slot for you. Do you need any special equipment besides a laptop and projector? W-Br: No, but I'll need the key so I can go in a little early and set up. Can I pick that up on Friday morning? M-Cn: Absolutely.",
+          "questions": [
+            {
+              "question_number": 32,
+              "question": "What is the woman preparing for?",
+              "options": {
+                "A": "A move to a new city",
+                "B": "A business trip",
+                "C": "A building tour",
+                "D": "A meeting with visiting colleagues"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 33,
+              "question": "Who most likely is the man?",
+              "options": {
+                "A": "An accountant",
+                "B": "An administrative assistant",
+                "C": "A marketing director",
+                "D": "A company president"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 34,
+              "question": "What does the woman want to pick up on Friday morning?",
+              "options": {
+                "A": "A building map",
+                "B": "A room key",
+                "C": "An ID card",
+                "D": "A parking pass"
+              },
+              "correct_answer": "B"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C02",
+          "question_numbers": [
+            35,
+            36,
+            37
+          ],
+          "transcript": "W-Am: Satoshi, have you already started working on the budget for next year? M-Au: Not yet... but I do plan to start it in the next day or so. W-Am: OK, perfect. I'd like to add some new engineers to my team next year if we can afford it. I thought one might be enough, but I realized we'll probably need three to handle our company's new contracts. M-Au: No problem. I can include that in the budget. I'll just need the details about the positions, including the job titles and expected salaries. Could you send that to me?",
+          "questions": [
+            {
+              "question_number": 35,
+              "question": "What task is the man responsible for?",
+              "options": {
+                "A": "Writing a budget",
+                "B": "Reviewing job applications",
+                "C": "Organizing a company newsletter",
+                "D": "Updating an employee handbook"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 36,
+              "question": "What does the woman want to do next year?",
+              "options": {
+                "A": "Organize a trade show",
+                "B": "Open a new store",
+                "C": "Redesign a product catalog",
+                "D": "Hire some team members"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 37,
+              "question": "What does the man ask the woman to do?",
+              "options": {
+                "A": "Order some business cards",
+                "B": "Write a press release",
+                "C": "Provide some additional details",
+                "D": "Set up a meeting time"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C03",
+          "question_numbers": [
+            38,
+            39,
+            40
+          ],
+          "transcript": "M-Cn: Welcome to Business Suit Outlet. How can I help you? W-Br: Hello. I'm interviewing for a job next week, and I wanted to buy a new suit. M-Cn: Congratulations! Do you have anything particular in mind? W-Br: Well, there's one in your display window that looks nice. But I don't really like the color... M-Cn: That one only comes in black. But we do have suits in other colors that are fashionable and appropriate for business. W-Br: OK. I can only spend 150 dollars, and I'd like a style similar to the one in the window. M-Cn: Let me show you some suits in that price range. By the way, any alterations needed for the suit are included in the price.",
+          "questions": [
+            {
+              "question_number": 38,
+              "question": "What does the woman need a suit for?",
+              "options": {
+                "A": "A job interview",
+                "B": "A fashion show",
+                "C": "A family celebration",
+                "D": "A television appearance"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 39,
+              "question": "What does the woman dislike about a suit on display?",
+              "options": {
+                "A": "The fabric",
+                "B": "The price",
+                "C": "The style",
+                "D": "The color"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 40,
+              "question": "What does the man say that the price includes?",
+              "options": {
+                "A": "Some accessories",
+                "B": "Alterations",
+                "C": "Sales tax",
+                "D": "Delivery"
+              },
+              "correct_answer": "B"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C04",
+          "question_numbers": [
+            41,
+            42,
+            43
+          ],
+          "transcript": "W-Br: Ellenville Public Library. How can I help you? M-Cn: Hi, I'm calling from the company Grover and James. We're interested in filming a scene for a movie in the lobby of the library. Its historic architecture is just what we're looking for. W-Br: Well... we actually had a film shoot in our library last year. And the thing is... they said it would take one day and it ended up taking three. I'm concerned that will happen again. M-Cn: I understand, but this is a very short scene. W-Br: Well, we have a board meeting here next week. I could give you ten minutes at the beginning to give us the details.",
+          "questions": [
+            {
+              "question_number": 41,
+              "question": "What kind of a business does the man most likely work for?",
+              "options": {
+                "A": "A legal consulting firm",
+                "B": "An architecture firm",
+                "C": "A film production company",
+                "D": "A book publishing company"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 42,
+              "question": "What does the woman say she is concerned about?",
+              "options": {
+                "A": "The length of a project",
+                "B": "The cost of an order",
+                "C": "The opinion of the public",
+                "D": "The skills of some workers"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 43,
+              "question": "What does the woman agree to let the man do?",
+              "options": {
+                "A": "Submit an application",
+                "B": "Speak at a meeting",
+                "C": "Review some books",
+                "D": "Measure a space"
+              },
+              "correct_answer": "B"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C05",
+          "question_numbers": [
+            44,
+            45,
+            46
+          ],
+          "transcript": "M-Au: Excuse me, I'm looking for Axel Schmidt's painting titled The Tulips. W-Am: Unfortunately, his paintings aren't on display. But it's just temporary – we're putting new flooring in that gallery. If you come back in a couple of weeks, the floors will be done, and you can see all of Schmidt's artwork. M-Au: Oh, that's too bad. I really wanted to see that painting. W-Am: I'm sorry about that. But we sell items featuring that painting in the gift shop. You could buy a souvenir so you could enjoy The Tulips every day!",
+          "questions": [
+            {
+              "question_number": 44,
+              "question": "Who most likely is Axel Schmidt?",
+              "options": {
+                "A": "A store manager",
+                "B": "A construction worker",
+                "C": "A journalist",
+                "D": "An artist"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 45,
+              "question": "What renovation does the woman mention?",
+              "options": {
+                "A": "Some walls are being painted.",
+                "B": "Some floors are being replaced.",
+                "C": "Some windows are being installed.",
+                "D": "Some light fixtures are being repaired."
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 46,
+              "question": "What does the woman encourage the man to do?",
+              "options": {
+                "A": "Visit a gift shop",
+                "B": "Send a package",
+                "C": "Wait for a bus",
+                "D": "Take a photograph"
+              },
+              "correct_answer": "A"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C06",
+          "question_numbers": [
+            47,
+            48,
+            49
+          ],
+          "transcript": "W-Br: Hey, Dmitry. Are you still working on your sales report? Collecting all the data from the car dealerships in my region is taking me such a long time. Especially because this year management wants additional information on vehicle purchases, like model and color... M-Au: Are you using the sales computation software? That's what I used for my report, and it worked really well. W-Br: Oh – you already finished it? M-Au: Well – I'm done collecting and analyzing the data, but I'm having trouble with the presentation. We didn't get any guidelines for that. W-Br: Remember Julie's presentation last year? It was very impressive. The slides are available on our company intranet.",
+          "questions": [
+            {
+              "question_number": 47,
+              "question": "What does the speakers' company most likely sell?",
+              "options": {
+                "A": "Electronics",
+                "B": "Clothing",
+                "C": "Food",
+                "D": "Automobiles"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 48,
+              "question": "Why is the woman surprised?",
+              "options": {
+                "A": "Some software is expensive.",
+                "B": "A color is very bright.",
+                "C": "The man has completed a report.",
+                "D": "The man bought a new car."
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 49,
+              "question": "Why does the woman say, \"The slides are available on our company intranet\"?",
+              "options": {
+                "A": "To request assistance reviewing a document",
+                "B": "To recommend using a document as a reference",
+                "C": "To report that a task has been completed",
+                "D": "To indicate that a file is in the wrong location"
+              },
+              "correct_answer": "B"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C07",
+          "question_numbers": [
+            50,
+            51,
+            52
+          ],
+          "transcript": "W-Am: Thanks for coming in, Omar. You might've heard that Rosa Garcia is retiring at the end of November. This means her position as director of information security in Singapore will be vacant. I'd like to know if you'd be interested. M-Cn: Oh! That would be a promotion for me. Well, hmm. I'll need a little time to think about it and talk it over with my family. I do have a question. When would I start the position? W-Am: The first week of December ideally. We'd pay for all your moving expenses, of course. If you decide to accept the offer.",
+          "questions": [
+            {
+              "question_number": 50,
+              "question": "According to the woman, what will happen at the end of November?",
+              "options": {
+                "A": "An executive will visit.",
+                "B": "An employee will retire.",
+                "C": "A product will be released.",
+                "D": "A study will be completed."
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 51,
+              "question": "What does the man want to know?",
+              "options": {
+                "A": "Where he would be working",
+                "B": "When he would be starting a job",
+                "C": "How to get to an office building",
+                "D": "Why an event time has changed"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 52,
+              "question": "What does the woman say the company will pay for?",
+              "options": {
+                "A": "A work vehicle",
+                "B": "A private office",
+                "C": "Moving expenses",
+                "D": "Visitors' meals"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C08",
+          "question_numbers": [
+            53,
+            54,
+            55
+          ],
+          "transcript": "M-Cn: Maryam, did you hear that our construction company won the bid to build the river dam next to Burton City? W-Br: I did! This is such a major project for us... the dam's expected to produce enough electricity to power all of Burton. M-Cn: Right. Say, do you know when construction will begin? W-Br: I don't, but here comes the project manager now. He may have a better idea... Gerhard, are there any updates on the dam construction? M-Au: Well, we're going to have to wait until all the permits are approved. It'll be a while before anything else can happen.",
+          "questions": [
+            {
+              "question_number": 53,
+              "question": "What industry do the speakers work in?",
+              "options": {
+                "A": "Manufacturing",
+                "B": "Agriculture",
+                "C": "Transportation",
+                "D": "Construction"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 54,
+              "question": "What does the woman say a project will do for a city?",
+              "options": {
+                "A": "Increase tourism",
+                "B": "Generate electricity",
+                "C": "Preserve natural resources",
+                "D": "Improve property values"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 55,
+              "question": "What does Gerhard say needs to be done?",
+              "options": {
+                "A": "Permits need to be approved.",
+                "B": "Employees need to be trained.",
+                "C": "Materials need to be ordered.",
+                "D": "Inspections need to be made."
+              },
+              "correct_answer": "A"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C09",
+          "question_numbers": [
+            56,
+            57,
+            58
+          ],
+          "transcript": "M-Au: I have a question about a customer's prescription – he's... oh, I'm sorry. I see you're busy. W-Am: I don't have much to do. M-Au: His doctor prescribed a 30-day supply of this allergy medication, but I noticed we only have enough on the shelf for fifteen days. W-Am: Our weekly delivery arrives early tomorrow morning. Go ahead and give him the fifteen, and ask him to please come back for the rest. It's allergy season, so we're selling a lot of that medicine. M-Au: Then maybe we should increase the number of bottles in our next order from the distributor.",
+          "questions": [
+            {
+              "question_number": 56,
+              "question": "What does the woman imply when she says, \"I don't have much to do\"?",
+              "options": {
+                "A": "She has time to help.",
+                "B": "She plans to leave work early.",
+                "C": "Her computer is not working.",
+                "D": "She has not received an assignment."
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 57,
+              "question": "What does the man notice about some medication?",
+              "options": {
+                "A": "It needs to be refrigerated.",
+                "B": "It has expired.",
+                "C": "The dosage has changed.",
+                "D": "The supply is limited."
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 58,
+              "question": "What does the man suggest doing in the future?",
+              "options": {
+                "A": "Installing some shelves",
+                "B": "Confirming with a doctor",
+                "C": "Increasing an order amount",
+                "D": "Recommending a different medication"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C10",
+          "question_numbers": [
+            59,
+            60,
+            61
+          ],
+          "transcript": "M-Cn: Good morning, Ms. Davis. We've received comments from your legal team on the terms and agreements for the travel rewards credit card that we issued. M-Au: Could you explain the revisions we need to make to be in compliance with the law? W-Am: Sure. The problem with the agreement is this: it doesn't disclose to users that if a card isn't used for a year, the account will be suspended. M-Cn: Oh, that's an oversight on our part. We're glad you caught that. W-Am: We don't want to be fined by banking regulators, so all cardholders will need to be notified by the end of the month.",
+          "questions": [
+            {
+              "question_number": 59,
+              "question": "Who most likely is the woman?",
+              "options": {
+                "A": "A travel agent",
+                "B": "A bank teller",
+                "C": "A lawyer",
+                "D": "A mail-room worker"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 60,
+              "question": "What kind of document are the speakers discussing?",
+              "options": {
+                "A": "A user agreement",
+                "B": "An employment contract",
+                "C": "A list of travel expenses",
+                "D": "An insurance certificate"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 61,
+              "question": "Why must the document be revised by the end of the month?",
+              "options": {
+                "A": "To be included in a personnel file",
+                "B": "To use in a merger negotiation",
+                "C": "To meet a production deadline",
+                "D": "To avoid paying a fine"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C11",
+          "question_numbers": [
+            62,
+            63,
+            64
+          ],
+          "graphic": {
+            "type": "table",
+            "title": "Giordano Wedding",
+            "data": [
+              {
+                "Service": "Flowers",
+                "Cost": "$4,456"
+              },
+              {
+                "Service": "Photography",
+                "Cost": "$1,300"
+              },
+              {
+                "Service": "Catering",
+                "Cost": "$10,200"
+              },
+              {
+                "Service": "Shuttle bus",
+                "Cost": "$400"
+              },
+              {
+                "Service": "Total",
+                "Cost": "$16,356"
+              }
+            ]
+          },
+          "transcript": "M-Au: Ms. Giordano, it looks like the last of the wedding guests have left. My staff's going to start packing up our dishes and loading the van. W-Br: That's fine, thank you. The food was delicious. My son and his new wife were very happy with your service. M-Au: I'm glad you enjoyed it. And, again, I'm sorry that some of our waitstaff were late arriving. They said they drove right past the turnoff. W-Br: I understand. The venue is difficult to see from the road. I really like this location, though, with its view of the mountains from the gardens in the back.",
+          "questions": [
+            {
+              "question_number": 62,
+              "question": "Look at the graphic. How much did the man's company charge for its service?",
+              "options": {
+                "A": "$4,456",
+                "B": "$1,300",
+                "C": "$10,200",
+                "D": "$400"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 63,
+              "question": "Why does the man apologize?",
+              "options": {
+                "A": "Business hours have changed.",
+                "B": "A price was wrong.",
+                "C": "Some staff arrived late.",
+                "D": "A request could not be fulfilled."
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 64,
+              "question": "What does the woman like about a venue?",
+              "options": {
+                "A": "It has a nice view.",
+                "B": "It is conveniently located.",
+                "C": "It is tastefully decorated.",
+                "D": "It can host large events."
+              },
+              "correct_answer": "A"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C12",
+          "question_numbers": [
+            65,
+            66,
+            67
+          ],
+          "graphic": {
+            "type": "seating_chart",
+            "title": "Concert Venue",
+            "sections": {
+              "1": "top center",
+              "2": "right",
+              "3": "center front",
+              "4": "left"
+            }
+          },
+          "transcript": "W-Am: Hey, Thomas? You like concerts. Any chance you're interested in the local band showcase this weekend? I have two tickets that I don't need. M-Au: You got tickets to that? That's surprising! I heard that they sold out in just a few days. W-Am: They did, but I actually won these in a radio contest. That's why I'm giving them away instead of selling them. Good seats, too. Right in the middle, close to the stage. M-Au: Sure, I'll take them. Thanks! Why can't you go? W-Am: This weekend is my parents' anniversary. My sisters and I are planning a party for them at their home in Boston.",
+          "questions": [
+            {
+              "question_number": 65,
+              "question": "Why is the man surprised?",
+              "options": {
+                "A": "A popular band is coming to town.",
+                "B": "The woman plays a musical instrument.",
+                "C": "The woman was able to get concert tickets.",
+                "D": "Some musicians scheduled a second concert."
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 66,
+              "question": "Look at the graphic. In which section does the woman have seats?",
+              "options": {
+                "A": "Section 1",
+                "B": "Section 2",
+                "C": "Section 3",
+                "D": "Section 4"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 67,
+              "question": "What is the woman doing this weekend?",
+              "options": {
+                "A": "Practicing with her band",
+                "B": "Entering a radio contest",
+                "C": "Moving to Boston",
+                "D": "Attending a party"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "conversation_id": "C13",
+          "question_numbers": [
+            68,
+            69,
+            70
+          ],
+          "graphic": {
+            "type": "table",
+            "title": "Bellevue Apartments",
+            "data": [
+              {
+                "Unit": "1A",
+                "Tenant": "Tanaka"
+              },
+              {
+                "Unit": "1B",
+                "Tenant": "Zhao"
+              },
+              {
+                "Unit": "2A",
+                "Tenant": "Mukherjee"
+              },
+              {
+                "Unit": "2B",
+                "Tenant": "Tremblay"
+              }
+            ]
+          },
+          "transcript": "M-Cn: Hello. Bellevue Apartments Management Office. Can I help you? W-Am: Hi. I'm Azusa Suzuki. I'm a new tenant here, and I live in 2A. M-Cn: How's everything in your apartment so far? W-Am: Very good. One thing, though... When can you put my name on the building directory? It still says the previous tenant's name. M-Cn: No problem. I can send someone over now. Unit 2A, you said? W-Am: Yes. And, I'll be stopping by your office tomorrow with my February rent check. M-Cn: OK. See you then.",
+          "questions": [
+            {
+              "question_number": 68,
+              "question": "Who most likely is the man?",
+              "options": {
+                "A": "A maintenance worker",
+                "B": "A property manager",
+                "C": "A real estate agent",
+                "D": "A bank employee"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 69,
+              "question": "Look at the graphic. Which name needs to be changed?",
+              "options": {
+                "A": "Tanaka",
+                "B": "Zhao",
+                "C": "Mukherjee",
+                "D": "Tremblay"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 70,
+              "question": "What does the woman say she is going to do tomorrow?",
+              "options": {
+                "A": "Fill out a registration form",
+                "B": "Meet with some neighbors",
+                "C": "Order some furniture",
+                "D": "Make a payment"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_number": 4,
+      "title": "Part 4 – Talks",
+      "directions": "You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time.",
+      "talks": [
+        {
+          "talk_id": "T01",
+          "question_numbers": [
+            71,
+            72,
+            73
+          ],
+          "transcript": "Hello, this is Karen Smith. I have an appointment with Dr. Miller for my annual eye exam on Tuesday. Unfortunately, I won't be able to make it. If possible, I'd like to reschedule for later in the week. If Dr. Miller is available in the afternoon, that would work better for me. I also wanted to ask about your warranty for eyeglasses. What exactly does the warranty cover? Thank you, and please call me back at 555-0110.",
+          "questions": [
+            {
+              "question_number": 71,
+              "question": "What kind of business is the speaker most likely calling?",
+              "options": {
+                "A": "A hair salon",
+                "B": "An insurance company",
+                "C": "A car dealership",
+                "D": "An eye doctor's office"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 72,
+              "question": "What does the speaker say about her appointment?",
+              "options": {
+                "A": "It is too far away.",
+                "B": "It needs to be rescheduled.",
+                "C": "It is too expensive.",
+                "D": "It should be with a different person."
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 73,
+              "question": "What is the speaker interested in learning more about?",
+              "options": {
+                "A": "Payment methods",
+                "B": "Delivery options",
+                "C": "A warranty",
+                "D": "A job opening"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "talk_id": "T02",
+          "question_numbers": [
+            74,
+            75,
+            76
+          ],
+          "transcript": "Curious about how chocolate is made? Then come visit us at Bodin's Chocolate Factory! You'll have a great time. We offer guided tours every Saturday and Sunday at our factory, located directly across from Appleton Shopping Center. During your two-hour visit, you'll observe the creation and packaging of Bodin's products. And each visitor will get their picture taken with Cheery, our adorable chocolate mascot, to take home as a souvenir. Right now, with the coupon available on our Web site, you can bring in a group of twelve or more people for half the price. Download yours today!",
+          "questions": [
+            {
+              "question_number": 74,
+              "question": "What is being advertised?",
+              "options": {
+                "A": "A factory tour",
+                "B": "A baking competition",
+                "C": "A grand opening",
+                "D": "An art show"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 75,
+              "question": "What will participants receive?",
+              "options": {
+                "A": "A poster",
+                "B": "A promotional mug",
+                "C": "A company T-shirt",
+                "D": "A photograph"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 76,
+              "question": "What can the listeners do on a Web site?",
+              "options": {
+                "A": "Find a recipe",
+                "B": "Fill out an entry form",
+                "C": "View a product list",
+                "D": "Download a coupon"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "talk_id": "T03",
+          "question_numbers": [
+            77,
+            78,
+            79
+          ],
+          "transcript": "Attention, everyone. Unfortunately, we've had to stop the movie. As you've probably noticed, we're having technical difficulties with the audio. I'm very sorry about this – we take our sound quality seriously and want you to know we'll have technicians here as soon as possible to resolve this issue. As you exit, please stop by the customer service desk in the lobby to pick up two free tickets for your next movie. Again, my apologies for the inconvenience.",
+          "questions": [
+            {
+              "question_number": 77,
+              "question": "Where does the announcement take place?",
+              "options": {
+                "A": "At a sports arena",
+                "B": "At a concert hall",
+                "C": "At an art museum",
+                "D": "At a movie theater"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 78,
+              "question": "Why does the speaker apologize?",
+              "options": {
+                "A": "A presenter has been delayed.",
+                "B": "Some lights have gone out.",
+                "C": "A sound system is broken.",
+                "D": "A construction project is noisy."
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 79,
+              "question": "What does the speaker offer the listeners?",
+              "options": {
+                "A": "A promotional item",
+                "B": "A parking voucher",
+                "C": "Discounted snacks",
+                "D": "Free tickets"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "talk_id": "T04",
+          "question_numbers": [
+            80,
+            81,
+            82
+          ],
+          "transcript": "Welcome to Branson Tech's second annual conference on computer security. We decided to try something different to publicize the event this year. We advertised primarily through social media rather than by e-mail newsletters or on company Web sites. And over 300 people are here! The first presentations will begin in fifteen minutes. The talks will take place in different rooms throughout the building, so please be sure to check your programs for the list of topics, speakers, and locations.",
+          "questions": [
+            {
+              "question_number": 80,
+              "question": "What event is taking place?",
+              "options": {
+                "A": "A technology conference",
+                "B": "A product demonstration",
+                "C": "A company fund-raiser",
+                "D": "A training workshop"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 81,
+              "question": "Why does the speaker say, \"And over 300 people are here\"?",
+              "options": {
+                "A": "To propose moving to a larger venue",
+                "B": "To indicate that some advertising was successful",
+                "C": "To emphasize the importance of working quickly",
+                "D": "To suggest more volunteers are needed"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 82,
+              "question": "What does the speaker ask the listeners to do?",
+              "options": {
+                "A": "Provide feedback",
+                "B": "Silence mobile phones",
+                "C": "Review an event program",
+                "D": "Enjoy some refreshments"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "talk_id": "T05",
+          "question_numbers": [
+            83,
+            84,
+            85
+          ],
+          "transcript": "Welcome, everyone. On behalf of the Department of Transportation, I'd like to announce a new experimental program to reduce traffic in Greenville. Beginning in January, there will be a ten-dollar fee for each car that enters the city. There will, however, be a lower fee for people who commute to Greenville for work. They will be asked to pay five dollars rather than ten dollars. These charges are aimed at deterring drivers from coming into this very crowded area. The program will be in effect for three months. After that, we will determine if the program has decreased traffic congestion enough to continue it permanently.",
+          "questions": [
+            {
+              "question_number": 83,
+              "question": "What is the purpose of the plan?",
+              "options": {
+                "A": "To support local businesses",
+                "B": "To promote tourism",
+                "C": "To decrease traffic",
+                "D": "To reduce government spending"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 84,
+              "question": "Who does the speaker say will receive a discount?",
+              "options": {
+                "A": "Commuters",
+                "B": "Senior citizens",
+                "C": "Students",
+                "D": "City officials"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 85,
+              "question": "What will happen after three months?",
+              "options": {
+                "A": "A survey will be distributed.",
+                "B": "A new director will take over.",
+                "C": "A bus line will be added.",
+                "D": "A program evaluation will take place."
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "talk_id": "T06",
+          "question_numbers": [
+            86,
+            87,
+            88
+          ],
+          "transcript": "Thanks for tuning in to Music Today on Radio 49. First, a reminder that the Classical Music Festival is this weekend. Radio 49 is giving listeners a chance to win a pair of tickets by entering a contest. And tickets are almost sold out. Just go to our Web site and tell us what you enjoy most on our station, and we'll pick a winner at random. This year is the tenth anniversary of the event, which was founded by a famous classical musician, Umesh Gupta. On tomorrow morning's program, Mr. Gupta will be here for an interview about the history of the festival. Be sure to join us for that.",
+          "questions": [
+            {
+              "question_number": 86,
+              "question": "What event is the speaker discussing?",
+              "options": {
+                "A": "A sports competition",
+                "B": "A music festival",
+                "C": "A cooking demonstration",
+                "D": "A historical play"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 87,
+              "question": "Why does the speaker say, \"tickets are almost sold out\"?",
+              "options": {
+                "A": "To encourage the listeners to enter a contest",
+                "B": "To suggest that the listeners arrive early",
+                "C": "To complain that an event space is too small",
+                "D": "To praise the results of a marketing plan"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 88,
+              "question": "What will happen tomorrow morning?",
+              "options": {
+                "A": "A new venue will open.",
+                "B": "A prize winner will be announced.",
+                "C": "An interview will take place.",
+                "D": "A video will be filmed."
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "talk_id": "T07",
+          "question_numbers": [
+            89,
+            90,
+            91
+          ],
+          "transcript": "Thank you for visiting our booth here at the trade fair. We're so excited to show you our new patio furniture. You're probably familiar with our wooden outdoor tables and chairs, and we want you to know that we've expanded that line to include plastic furniture. This furniture is very durable. It can withstand any kind of weather – and it needs no maintenance. I'm going to hand out a sample of the plastic material we use. Please pass it around after you've had a chance to look at it.",
+          "questions": [
+            {
+              "question_number": 89,
+              "question": "What type of business does the speaker work for?",
+              "options": {
+                "A": "A computer company",
+                "B": "A construction firm",
+                "C": "A furniture manufacturer",
+                "D": "An office-supply distributor"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 90,
+              "question": "What does the speaker say is an advantage of the new material?",
+              "options": {
+                "A": "It is inexpensive.",
+                "B": "It is durable.",
+                "C": "It is lightweight.",
+                "D": "It comes in many colors."
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 91,
+              "question": "What will the listeners do next?",
+              "options": {
+                "A": "Sign up for a mailing list",
+                "B": "Watch an instructional video",
+                "C": "Enter a contest",
+                "D": "Look at a sample"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "talk_id": "T08",
+          "question_numbers": [
+            92,
+            93,
+            94
+          ],
+          "transcript": "This is Noriko, the human resources supervisor here in Albany. I'm calling about your request to transfer to our branch in Havertown... I know your commute is difficult, and it takes you over an hour to drive to this office. So I've contacted the manager at that location, and there is a need for a skilled software engineer. There are a few forms that you'll need to fill out, though, to complete the request. Now we need to talk about your work schedule to decide when you'll start at the new location. Please call me back.",
+          "questions": [
+            {
+              "question_number": 92,
+              "question": "Which department does the speaker work in?",
+              "options": {
+                "A": "Product Development",
+                "B": "Human Resources",
+                "C": "Legal",
+                "D": "Accounting"
+              },
+              "correct_answer": "B"
+            },
+            {
+              "question_number": 93,
+              "question": "Why does the speaker say, \"there is a need for a skilled software engineer\"?",
+              "options": {
+                "A": "To recommend an employee sign up for more training",
+                "B": "To indicate that a project deadline will be extended",
+                "C": "To approve a request to transfer",
+                "D": "To suggest consulting with an expert"
+              },
+              "correct_answer": "C"
+            },
+            {
+              "question_number": 94,
+              "question": "What does the speaker want to discuss with the listener?",
+              "options": {
+                "A": "Some sales results",
+                "B": "Some client feedback",
+                "C": "An office renovation",
+                "D": "A work schedule"
+              },
+              "correct_answer": "D"
+            }
+          ]
+        },
+        {
+          "talk_id": "T09",
+          "question_numbers": [
+            95,
+            96,
+            97
+          ],
+          "graphic": {
+            "type": "table",
+            "title": "This Week's Guests",
+            "data": [
+              {
+                "Day": "Monday",
+                "Guest": "Ling Yu—Part 1"
+              },
+              {
+                "Day": "Tuesday",
+                "Guest": "Ling Yu—Part 2"
+              },
+              {
+                "Day": "Wednesday",
+                "Guest": "Hilda Orman"
+              },
+              {
+                "Day": "Thursday",
+                "Guest": "Haru Nakamura"
+              },
+              {
+                "Day": "Friday",
+                "Guest": "Joseph Samir"
+              }
+            ]
+          },
+          "transcript": "You're listening to Making My Company with Mark Sullivan. In each episode I invite entrepreneurs from around the world to talk about how they built their successful businesses. In celebration of our radio show's ten-year anniversary, our Web site now has all of our previously aired episodes. You can access them with the click of a button. You can even download them onto mobile devices to listen to on the go! OK, now, I welcome Haru Nakamura to the show. Ms. Nakamura is excited to be here today.",
+          "questions": [
+            {
+              "question_number": 95,
+              "question": "Why are guests invited on the speaker's radio show?",
+              "options": {
+                "A": "To discuss their businesses",
+                "B": "To talk about local history",
+                "C": "To teach communication skills",
+                "D": "To offer travel tips"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 96,
+              "question": "What can the listeners do on a Web site?",
+              "options": {
+                "A": "View photos of famous guests",
+                "B": "Sign up for a special service",
+                "C": "Read about upcoming programs",
+                "D": "Listen to previous episodes"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 97,
+              "question": "Look at the graphic. Which day is this episode being aired?",
+              "options": {
+                "A": "Tuesday",
+                "B": "Wednesday",
+                "C": "Thursday",
+                "D": "Friday"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        },
+        {
+          "talk_id": "T10",
+          "question_numbers": [
+            98,
+            99,
+            100
+          ],
+          "graphic": {
+            "type": "shelf_display",
+            "title": "Store Shelf Display",
+            "data": [
+              {
+                "shelf": "Shelf 1",
+                "item": "shirts with vertical stripes"
+              },
+              {
+                "shelf": "Shelf 2",
+                "item": "checkered shirts"
+              },
+              {
+                "shelf": "Shelf 3",
+                "item": "plain shirts"
+              },
+              {
+                "shelf": "Shelf 4",
+                "item": "polka dot shirts"
+              }
+            ]
+          },
+          "transcript": "It's Akira, calling from the district manager's office. The visual merchandising team wants to make a slight change to the fall display standards that we sent you yesterday. They want to move the shirts with the vertical stripes – hang them instead of having them displayed on the shelf. We'll display some colorful accessories there instead, like scarves and ties. Also, hang all the socks on gridwall panels by the cash registers. Those sell best when people can grab them when they walk up to pay. The thicker, cold-weather socks will be shipped to you soon. You'll get an e-mail confirmation with the details when they're sent.",
+          "questions": [
+            {
+              "question_number": 98,
+              "question": "Look at the graphic. Where will the scarves and ties be displayed?",
+              "options": {
+                "A": "On Shelf 1",
+                "B": "On Shelf 2",
+                "C": "On Shelf 3",
+                "D": "On Shelf 4"
+              },
+              "correct_answer": "A"
+            },
+            {
+              "question_number": 99,
+              "question": "What should be displayed near the cash registers?",
+              "options": {
+                "A": "Coupons",
+                "B": "Hats",
+                "C": "Gloves",
+                "D": "Socks"
+              },
+              "correct_answer": "D"
+            },
+            {
+              "question_number": 100,
+              "question": "What should the listener expect to receive in an e-mail?",
+              "options": {
+                "A": "A payment schedule",
+                "B": "Photographs",
+                "C": "Shipping information",
+                "D": "Display measurements"
+              },
+              "correct_answer": "C"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
