@@ -5,9 +5,9 @@ describe("BLACK BOX - Authentication", () => {
   let driver;
 
   beforeAll(async () => {
-    console.log("📋 beforeAll: Starting...");
+    console.log("beforeAll: Starting...");
     driver = await createDriver();
-    console.log("📋 beforeAll: Driver created successfully");
+    console.log("beforeAll: Driver created successfully");
   }, 180000); // 3 minute timeout for beforeAll
 
   afterEach(async () => {
