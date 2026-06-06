@@ -31,21 +31,20 @@ const AdminDashboard = ({
     }
   };
 
-  // Hàm xóa section
-  const handleDeleteSection = async (sectionId, sectionTitle) => {
-    if (window.confirm(`Bạn có chắc chắn muốn xóa đề thi "${sectionTitle}"?`)) {
-      try {
-        await deleteSection(sectionId);
-        alert('Xóa đề thi thành công!');
-        
-        // Refresh lại danh sách đề thi
-        if (fetchAllTests) {
-          await fetchAllTests();
-        }
-      } catch (err) {
-        console.error('Error deleting section:', err);
-        alert('Không thể xóa đề thi! Vui lòng thử lại.');
-      }
+  // Hàm xóa toàn bộ đề thi (tất cả section/part)
+  const handleDeleteTest = async (test) => {
+    const title = test.title || test.name;
+    const sections = test.sections || [];
+    if (!window.confirm(`Bạn có chắc chắn muốn xóa toàn bộ đề thi "${title}"?\n(Gồm ${sections.length} part)`)) {
+      return;
+    }
+    try {
+      await Promise.all(sections.map(s => deleteSection(s.id)));
+      alert('Xóa đề thi thành công!');
+      if (fetchAllTests) await fetchAllTests();
+    } catch (err) {
+      console.error('Error deleting test:', err);
+      alert('Không thể xóa đề thi! Vui lòng thử lại.');
     }
   };
 
@@ -547,11 +546,7 @@ const AdminDashboard = ({
                       onClick={(e) => {
                         e.stopPropagation();
                         
-                        console.log('🔍 Test object:', test);
-                        console.log('🔍 section_id:', test.section_id);
-                        
-                        // SỬ DỤNG section_id
-                        handleDeleteSection(test.section_id, test.title || test.name);
+                        handleDeleteTest(test);
                       }}
                       title="Xóa đề thi"
                     >
