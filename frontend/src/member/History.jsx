@@ -75,7 +75,8 @@ const DetailModal = ({ session, userId, onClose }) => {
   }, []);
 
   const g = grade(session.percent);
-  const dt = new Date(session.attempted_at);
+  const raw = session.attempted_at;
+  const dt = new Date(raw.endsWith('Z') || raw.includes('+') ? raw : raw + 'Z');
   const dateStr = dt.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
   const timeStr = dt.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
 

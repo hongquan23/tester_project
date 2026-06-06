@@ -127,8 +127,9 @@ def get_history(user_id: int, db: Session = Depends(get_db)):
     history = []
     for (section_id, ts), group in sorted(groups.items(), key=lambda x: x[0][1], reverse=True):
         section = db.query(Section).filter(Section.id == section_id).first()
-        total = len(group)
-        score = sum(1 for a in group if a.is_correct)
+        total    = len(group)
+        answered = sum(1 for a in group if a.user_ans is not None)
+        score    = sum(1 for a in group if a.is_correct)
         history.append({
             "section_id": section_id,
             "section_name": section.name if section else f"Section {section_id}",
@@ -136,7 +137,8 @@ def get_history(user_id: int, db: Session = Depends(get_db)):
             "attempted_at": ts,
             "score": score,
             "total": total,
-            "percent": round(score / total * 100) if total else 0,
+            "answered": answered,
+            "percent": round(score / answered * 100) if answered else 0,
         })
 
     return history
