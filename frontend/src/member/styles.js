@@ -599,6 +599,92 @@ const styles = {
     transition: 'all 0.15s',
   },
 
+  // ─── EXIT EXAM CONFIRM MODAL ───────────────────────────────────────────────
+  exitModalOverlay: {
+    position: 'fixed',
+    inset: 0,
+    background: 'rgba(15, 23, 42, 0.55)',
+    backdropFilter: 'blur(6px)',
+    WebkitBackdropFilter: 'blur(6px)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 10000,
+    padding: '20px',
+    animation: 'fadeIn 0.2s ease-out',
+  },
+
+  exitModal: {
+    width: '100%',
+    maxWidth: '420px',
+    background: '#ffffff',
+    borderRadius: '20px',
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    padding: '32px 28px 24px',
+    textAlign: 'center',
+    border: '1px solid #f1f5f9',
+    animation: 'zoomIn 0.25s ease-out',
+  },
+
+  exitModalIconWrap: {
+    width: '64px',
+    height: '64px',
+    margin: '0 auto 20px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)',
+    border: '1px solid #fed7aa',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  exitModalTitle: {
+    margin: '0 0 10px',
+    fontSize: '20px',
+    fontWeight: '700',
+    color: '#0f172a',
+    lineHeight: 1.4,
+  },
+
+  exitModalMessage: {
+    margin: '0 0 28px',
+    fontSize: '14px',
+    lineHeight: 1.65,
+    color: '#64748b',
+  },
+
+  exitModalActions: {
+    display: 'flex',
+    gap: '12px',
+  },
+
+  exitModalCancelBtn: {
+    flex: 1,
+    padding: '12px 20px',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+    background: '#f8fafc',
+    color: '#475569',
+    fontSize: '15px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.15s ease',
+  },
+
+  exitModalConfirmBtn: {
+    flex: 1,
+    padding: '12px 20px',
+    borderRadius: '12px',
+    border: 'none',
+    background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+    color: '#ffffff',
+    fontSize: '15px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    boxShadow: '0 4px 14px rgba(239, 68, 68, 0.35)',
+    transition: 'all 0.15s ease',
+  },
+
   // legacy aliases (kept for compatibility)
   aiBox: {
     backgroundColor: '#f0fdf4',

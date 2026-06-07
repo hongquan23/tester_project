@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Mic, ArrowLeft, ArrowRight } from 'lucide-react';
 import Dashboard from './Dashboard';
@@ -20,6 +20,7 @@ import {
   submitMcqAnswers, getUser, getWeakAreas,
 } from "../api";
 import ExamResult from '../admin/ExamResult';
+import ExitExamModal from './ExitExamModal';
 import { Search, Star, Eye, Clock, ChevronDown, BookOpen, Crown, TrendingUp, Facebook, Youtube, Mail, Phone } from 'lucide-react';
 
 const skills = [
@@ -40,7 +41,7 @@ const mapAPIQuestionToUIFormat = (apiQuestion, skill, part) => {
     let prepTime = 30;
     let responseTime = 30;
 
-    switch(Number(part)) {
+    switch(Number(apiQuestion.part || part)) {
       case 1:
         questionType = 'Read a Short Text Aloud';
         prepTime = 25;
@@ -197,6 +198,14 @@ const ToeicMember = () => {
   const [examResult, setExamResult] = useState(null);
   const [examAttemptKey, setExamAttemptKey] = useState(0);
   const [isTimeUp, setIsTimeUp] = useState(false);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const timeUpHandledRef = useRef(false);
+  const submittedQuestionIdsRef = useRef(new Set());
+  const audioAnswersRef = useRef({});
+  const answersRef = useRef({});
+  const selectedTestRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const timeRemainingRef = useRef(null);
   const allTests = [...speakingTestsData, ...writingTestsData, ...listeningTestsData, ...readingTestsData];
   const resetExamState = () => {
     setExamSubView("question");
@@ -311,6 +320,13 @@ useEffect(() => {
     setAudioURL(null);
   }
 }, [currentQuestionInSection, audioAnswers, selectedTest]);
+
+useEffect(() => { audioAnswersRef.current = audioAnswers; }, [audioAnswers]);
+useEffect(() => { answersRef.current = answers; }, [answers]);
+useEffect(() => { selectedTestRef.current = selectedTest; }, [selectedTest]);
+useEffect(() => { mediaRecorderRef.current = mediaRecorder; }, [mediaRecorder]);
+useEffect(() => { timeRemainingRef.current = timeRemaining; }, [timeRemaining]);
+
 const fetchTests = async () => {
   try {
     // ===== SPEAKING =====
@@ -448,7 +464,10 @@ const fetchTests = async () => {
       } catch (e) { console.error('Lỗi load reading section:', e); }
     }
 
-    setSpeakingTestsData(Object.values(groupedSpeaking));
+    setSpeakingTestsData(Object.values(groupedSpeaking).map(test => ({
+      ...test,
+      questions: [...test.questions].sort((a, b) => (a.part || 0) - (b.part || 0) || a.id - b.id)
+    })));
     setWritingTestsData(Object.values(groupedWriting));
     setListeningTestsData(Object.values(groupedListening));
     setReadingTestsData(Object.values(groupedReading));
@@ -463,23 +482,21 @@ const fetchTests = async () => {
       const minutes = selectedTest.duration;
       const seconds = minutes * 60;
       setTimeRemaining(seconds);
-      setIsTimeUp(false); // Reset trạng thái
-      
+      setIsTimeUp(false);
+      timeUpHandledRef.current = false;
+      submittedQuestionIdsRef.current = new Set();
+
       const timer = setInterval(() => {
         setTimeRemaining(prev => {
           if (prev <= 1) {
             clearInterval(timer);
-            setIsTimeUp(true); // ⭐ Đánh dấu hết giờ
-            
-            // ⭐ Hiển thị thông báo
-            alert('⏰ HẾT GIỜ LÀM BÀI!\n\nBài thi đã kết thúc. Bạn không thể làm bài nữa.');
-            
+            setIsTimeUp(true);
             return 0;
           }
           return prev - 1;
         });
       }, 1000);
-      
+
       return () => clearInterval(timer);
     }
   }, [activeView, selectedTest, examAttemptKey]);
@@ -513,10 +530,11 @@ const fetchTests = async () => {
 
         const q = getCurrentQuestion();
         if (q) {
-          setAudioAnswers(prev => ({
-            ...prev,
-            [q.id]: { blob, url }
-          }));
+          setAudioAnswers(prev => {
+            const next = { ...prev, [q.id]: { blob, url } };
+            audioAnswersRef.current = next;
+            return next;
+          });
         }
         setIsRecording(false);
         stream.getTracks().forEach((track) => track.stop());
@@ -586,8 +604,27 @@ const handleHistoryClick = () => {
     setAnswers({});
     setExamResult(null);
     resetAudio();
+    submittedQuestionIdsRef.current = new Set();
     setActiveView("exam");
     navigate("/member/exam");
+  };
+
+  const handleExitExam = () => {
+    setShowExitConfirm(true);
+  };
+
+  const confirmExitExam = () => {
+    setShowExitConfirm(false);
+    localStorage.removeItem("currentExam");
+    resetExamState();
+    setSelectedTest(null);
+    setCurrentQuestionInSection(0);
+    setCurrentSection(0);
+    setAudioURL(null);
+    setIsRecording(false);
+    setExamResult(null);
+    setActiveView("dashboard");
+    navigate("/member/dashboard");
   };
 
   const handleLogout = () => {
@@ -624,17 +661,19 @@ const handlePrevQuestion = () => {
     setSubmittedQuestion(null);
   }
 };
-const submitSpeaking = async (question) => {
-  if (!audioBlob) {
-    alert("Bạn chưa ghi âm!");
-    return;
+const submitSpeakingQuestion = async (question, blobOverride = null, { silent = false } = {}) => {
+  const blob = blobOverride || audioBlob;
+  if (!blob) {
+    if (!silent) alert("Bạn chưa ghi âm!");
+    return false;
   }
+  if (submittedQuestionIdsRef.current.has(question.id)) return true;
 
   try {
-    setIsScoring(true);
+    if (!silent) setIsScoring(true);
 
     const formData = new FormData();
-    formData.append("audio", audioBlob);
+    formData.append("audio", blob);
 
     const part = Number(question.part);
     let res = null;
@@ -644,60 +683,119 @@ const submitSpeaking = async (question) => {
         formData.append("reference_text", question.text || "");
         res = await scoreSpeakingQ1_2(formData);
         break;
-
       case 2:
         formData.append("image_description", question.image_describe || "");
         res = await scoreSpeakingQ3_4(formData);
         break;
-
       case 3:
         formData.append("question", question.text || "");
         res = await scoreSpeakingQ5_7(formData);
         break;
-
       case 4:
         formData.append("information", question.information || "");
         formData.append("question", question.text || "");
         res = await scoreSpeakingQ8_10(formData);
         break;
-
       case 5:
         formData.append("question", question.text || "");
         res = await scoreSpeakingQ11(formData);
         break;
-
       default:
-        alert("Không xác định Part Speaking");
-        return;
+        if (!silent) alert("Không xác định Part Speaking");
+        return false;
     }
 
     if (!res || !res.data) {
-      alert("API không trả kết quả!");
-      return;
+      if (!silent) alert("API không trả kết quả!");
+      return false;
     }
 
-    setSubmittedQuestion({
-      question,
-      transcript: res.data.transcript || "",
-      feedback: res.data.feedback || res.data.evaluation || "",
-      audioURL
-    });
+    submittedQuestionIdsRef.current.add(question.id);
 
-    setExamSubView("result");
+    if (!silent) {
+      setSubmittedQuestion({
+        question,
+        transcript: res.data.transcript || "",
+        feedback: res.data.feedback || res.data.evaluation || "",
+        audioURL: blobOverride
+          ? audioAnswersRef.current[question.id]?.url
+          : audioURL
+      });
+      setExamSubView("result");
+    }
 
+    return true;
   } catch (err) {
-  console.error("API ERROR:", err?.response?.data || err.message || err);
-  alert("Lỗi gửi Speaking!");
+    console.error("API ERROR:", err?.response?.data || err.message || err);
+    if (!silent) alert("Lỗi gửi Speaking!");
+    return false;
   } finally {
-    setIsScoring(false);
+    if (!silent) setIsScoring(false);
   }
 };
 
- const handleSubmitExam = async () => {
+const submitSpeaking = (question) => submitSpeakingQuestion(question);
+
+const submitWritingQuestion = async (question, studentText, { silent = false } = {}) => {
+  const text = (studentText || "").trim();
+  if (!text) {
+    if (!silent) alert("Bạn chưa nhập câu trả lời!");
+    return false;
+  }
+  if (submittedQuestionIdsRef.current.has(question.id)) return true;
+
+  try {
+    if (!silent) setIsScoring(true);
+    let res = null;
+
+    if (question.type === 'Write a Sentence') {
+      const formData = new URLSearchParams();
+      formData.append("image_description", question.image_describe || "");
+      formData.append("required_word_1", question.required_word_1 || "");
+      formData.append("required_word_2", question.required_word_2 || "");
+      formData.append("student_sentence", text);
+      res = await scoreWritingQ1_5(formData);
+    } else if (question.type === 'Respond to a written request') {
+      const formData = new FormData();
+      formData.append("email_prompt", question.passage || "");
+      formData.append("directions", question.instruction || question.question || "");
+      formData.append("student_response", text);
+      res = await scoreWritingQ6_7(formData);
+    } else if (question.type === 'Write an opinion essay') {
+      const formData = new FormData();
+      formData.append("question", question.question || "");
+      formData.append("student_response", text);
+      res = await scoreWritingQ8(formData);
+    } else {
+      return false;
+    }
+
+    submittedQuestionIdsRef.current.add(question.id);
+
+    if (!silent) {
+      setSubmittedQuestion({
+        question,
+        answer: text,
+        feedback: res.data.feedback || res.data.evaluation || res.data
+      });
+      setExamSubView("result");
+    }
+
+    return true;
+  } catch (err) {
+    console.error(err);
+    if (!silent) alert("Lỗi chấm điểm Writing!");
+    return false;
+  } finally {
+    if (!silent) setIsScoring(false);
+  }
+};
+
+ const handleSubmitExam = async (forceSubmit = false) => {
     if (!selectedTest || !isMcqSkill(selectedTest.skill)) return;
     const total = selectedTest.questions.length;
     const answeredCount = Object.keys(answers).length;
-    if (answeredCount < total) {
+    if (!forceSubmit && answeredCount < total) {
       const ok = window.confirm(`Bạn còn ${total - answeredCount} câu chưa trả lời. Vẫn nộp bài?`);
       if (!ok) return;
     }
@@ -709,13 +807,71 @@ const submitSpeaking = async (question) => {
         skill: selectedTest.skill.toLowerCase(),
         answers,
       });
-      const timeTaken = selectedTest.duration * 60 - (timeRemaining ?? 0);
+      const timeTaken = selectedTest.duration * 60 - (timeRemainingRef.current ?? 0);
       setExamResult({ ...res.data, questions: selectedTest.questions, timeTaken });
     } catch (err) {
       console.error("Submit error:", err);
       alert("Nộp bài thất bại!");
     }
   };
+
+  useEffect(() => {
+    if (!isTimeUp || timeUpHandledRef.current) return;
+    timeUpHandledRef.current = true;
+
+    const runAutoSubmit = async () => {
+      const test = selectedTestRef.current;
+      if (!test) return;
+
+      const stopRecordingAsync = () => new Promise((resolve) => {
+        const recorder = mediaRecorderRef.current;
+        if (!recorder || recorder.state === 'inactive') {
+          resolve();
+          return;
+        }
+        const onStop = () => {
+          recorder.removeEventListener('stop', onStop);
+          setTimeout(resolve, 150);
+        };
+        recorder.addEventListener('stop', onStop);
+        recorder.stop();
+      });
+
+      await stopRecordingAsync();
+
+      if (isMcqSkill(test.skill)) {
+        await handleSubmitExam(true);
+      } else if (test.skill === 'Speaking') {
+        setIsScoring(true);
+        try {
+          for (const question of test.questions || []) {
+            const blob = audioAnswersRef.current[question.id]?.blob;
+            if (blob) {
+              await submitSpeakingQuestion(question, blob, { silent: true });
+            }
+          }
+        } finally {
+          setIsScoring(false);
+        }
+      } else if (test.skill === 'Writing') {
+        setIsScoring(true);
+        try {
+          for (const question of test.questions || []) {
+            const text = answersRef.current[question.id];
+            if (text?.trim()) {
+              await submitWritingQuestion(question, text, { silent: true });
+            }
+          }
+        } finally {
+          setIsScoring(false);
+        }
+      }
+
+      alert('⏰ HẾT GIỜ LÀM BÀI!\n\nBài thi đã kết thúc. Hệ thống đã tự động nộp các câu trả lời của bạn.');
+    };
+
+    runAutoSubmit();
+  }, [isTimeUp]);
 
  const renderExamQuestion = () => {
    const question = getCurrentQuestion();
@@ -1182,36 +1338,7 @@ const renderRecordControls = (responseTime, question) => {
                         alert("Hết giờ làm bài!");
                         return;
                       }
-                  const studentSentence = (answers[question.id] || "").trim();
-                  if (!studentSentence) {
-                    alert("Bạn chưa nhập câu trả lời!");
-                    return;
-                  }
-
-                  try {
-                    setIsScoring(true);
-
-                    const formData = new URLSearchParams();
-                    formData.append("image_description", question.image_describe || "");
-                    formData.append("required_word_1", question.required_word_1 || "");
-                    formData.append("required_word_2", question.required_word_2 || "");
-                    formData.append("student_sentence", studentSentence);
-
-                    const res = await scoreWritingQ1_5(formData);
-
-                    setSubmittedQuestion({
-                      question,
-                      answer: studentSentence,
-                      feedback: res.data.feedback
-                    });
-
-                    setExamSubView("result");
-                  } catch (err) {
-                    console.error(err);
-                    alert("Lỗi chấm điểm Writing!");
-                  } finally {
-                    setIsScoring(false);
-                  }
+                  await submitWritingQuestion(question, answers[question.id]);
                 }}
               >
                 {isScoring && <span style={styles.spinner} />}
@@ -1281,36 +1408,7 @@ const renderRecordControls = (responseTime, question) => {
                   alert("Hết giờ làm bài!");
                   return;
                 }
-                const studentResponse = (answers[question.id] || "").trim();
-
-                if (!studentResponse) {
-                  alert("Bạn chưa nhập câu trả lời!");
-                  return;
-                }
-
-                try {
-                  setIsScoring(true);
-
-                  const formData = new FormData();
-                  formData.append("email_prompt", question.passage || "");
-                  formData.append("directions", question.instruction || question.question || "");
-                  formData.append("student_response", studentResponse);
-
-                  const res = await scoreWritingQ6_7(formData);
-
-                  setSubmittedQuestion({
-                    question,
-                    answer: studentResponse,
-                    feedback: res.data.feedback || res.data
-                  });
-
-                  setExamSubView("result");
-                } catch (err) {
-                  console.error(err);
-                  alert("Lỗi chấm điểm Writing Part 2!");
-                } finally {
-                  setIsScoring(false);
-                }
+                await submitWritingQuestion(question, answers[question.id]);
               }}
             >
                 {isScoring && <span style={styles.spinner} />}
@@ -1368,34 +1466,7 @@ const renderRecordControls = (responseTime, question) => {
                         alert("Hết giờ làm bài!");
                         return;
                     }
-                  const studentResponse = (answers[question.id] || "").trim();
-
-                  if (!studentResponse) {
-                    alert("Bạn chưa nhập bài viết!");
-                    return;
-                  }
-
-                  try {
-                    setIsScoring(true);
-
-                    const formData = new FormData();
-                    formData.append("question", question.question || "");
-                    formData.append("student_response", studentResponse);
-
-                    const res = await scoreWritingQ8(formData);
-
-                    setSubmittedQuestion({
-                      question,
-                      feedback: res.data.feedback || res.data.evaluation || "",
-                    });
-
-                    setExamSubView("result");
-                  } catch (err) {
-                    console.error(err);
-                    alert("Lỗi chấm điểm Writing Part 3!");
-                  } finally {
-                    setIsScoring(false);
-                  }
+                  await submitWritingQuestion(question, answers[question.id]);
                 }}
               >
                   {isScoring && <span style={styles.spinner} />}
@@ -1724,6 +1795,12 @@ const renderRecordControls = (responseTime, question) => {
     }
 
     return (
+      <>
+      <ExitExamModal
+        isOpen={showExitConfirm}
+        onCancel={() => setShowExitConfirm(false)}
+        onConfirm={confirmExitExam}
+      />
       <div style={styles.testExam}>
         <div style={styles.examHeader}>
           <h1 style={styles.examTitle}>{selectedTest.title}</h1>
@@ -1743,17 +1820,7 @@ const renderRecordControls = (responseTime, question) => {
           )}
           <button
             style={{ ...styles.button, ...styles.buttonSecondary }}
-            onClick={() => {
-              resetExamState();
-              setSelectedTest(null);
-              setCurrentQuestionInSection(0);
-              setCurrentSection(0);
-              setAudioURL(null);
-              setIsRecording(false);
-              setExamResult(null);
-              setActiveView("dashboard");
-              navigate("/member/dashboard");
-            }}
+            onClick={handleExitExam}
           >
             Thoát
           </button>
@@ -1947,6 +2014,7 @@ const renderRecordControls = (responseTime, question) => {
           </div>
         </div>
       </div>
+      </>
     );
   };
 
@@ -2118,7 +2186,7 @@ const renderQuestionResult = () => {
   } else if (activeView === 'exam') {
     viewContent = renderExam();
   } else if (activeView === 'profile') {
-    viewContent = <Profile currentUser={currentUser} />;
+    viewContent = <Profile currentUser={currentUser} onUpdateUser={setCurrentUser} />;
   } else if (activeView === 'history') {
     viewContent = (
       <History

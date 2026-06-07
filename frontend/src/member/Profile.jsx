@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft, User, Mail, Lock, ShieldCheck, Camera, Save, CheckCircle, XCircle,
 } from "lucide-react";
-import { changePassword } from "../api";
+import { changePassword, updateUserName } from "../api";
 
-const Profile = ({ currentUser }) => {
+const Profile = ({ currentUser, onUpdateUser }) => {
   const navigate = useNavigate();
   const [name, setName] = useState(currentUser?.name || "Người dùng");
   const [currentPassword, setCurrentPassword] = useState("");
@@ -13,15 +13,30 @@ const Profile = ({ currentUser }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [pwMsg, setPwMsg] = useState(null); // { type: 'success'|'error', text: string }
   const [pwLoading, setPwLoading] = useState(false);
+  const [nameMsg, setNameMsg] = useState(null);
+  const [nameLoading, setNameLoading] = useState(false);
 
-  const handleUpdateName = () => alert("Tên mới: " + name);
+  const handleUpdateName = async () => {
+    if (!name.trim()) { setNameMsg({ type: "error", text: "Tên không được để trống" }); return; }
+    setNameLoading(true);
+    setNameMsg(null);
+    try {
+      const res = await updateUserName(currentUser.id, name.trim());
+      onUpdateUser?.(res.data);
+      setNameMsg({ type: "success", text: "Cập nhật tên thành công!" });
+    } catch {
+      setNameMsg({ type: "error", text: "Có lỗi xảy ra, vui lòng thử lại" });
+    } finally {
+      setNameLoading(false);
+    }
+  };
 
   const handleUpdatePassword = async () => {
     setPwMsg(null);
     if (!currentPassword) { setPwMsg({ type: "error", text: "Vui lòng nhập mật khẩu hiện tại" }); return; }
     if (!newPassword) { setPwMsg({ type: "error", text: "Vui lòng nhập mật khẩu mới" }); return; }
     if (newPassword !== confirmPassword) { setPwMsg({ type: "error", text: "Mật khẩu xác nhận không khớp" }); return; }
-    if (newPassword.length < 6) { setPwMsg({ type: "error", text: "Mật khẩu mới phải có ít nhất 6 ký tự" }); return; }
+    if (newPassword.length < 8) { setPwMsg({ type: "error", text: "Mật khẩu mới phải có ít nhất 8 ký tự" }); return; }
 
     setPwLoading(true);
     try {
@@ -124,9 +139,19 @@ const Profile = ({ currentUser }) => {
                   </div>
                 </div>
               </div>
-              <button onClick={handleUpdateName}
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-blue-900/40 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                <Save size={18} /> Lưu thay đổi
+              {nameMsg && (
+                <div className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-medium mb-4 ${
+                  nameMsg.type === "success"
+                    ? "bg-green-500/15 border border-green-500/30 text-green-400"
+                    : "bg-rose-500/15 border border-rose-500/30 text-rose-400"
+                }`}>
+                  {nameMsg.type === "success" ? <CheckCircle size={16} /> : <XCircle size={16} />}
+                  {nameMsg.text}
+                </div>
+              )}
+              <button onClick={handleUpdateName} disabled={nameLoading}
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-blue-900/40 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
+                <Save size={18} /> {nameLoading ? "Đang lưu..." : "Lưu thay đổi"}
               </button>
             </div>
 

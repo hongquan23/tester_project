@@ -39,6 +39,7 @@ export const changePassword = (userId, data) => api.put(`api/auth/change-passwor
 export const getUsers = () => api.get("api/users");
 export const getUser = (userId) => api.get(`api/users/${userId}`);
 export const deleteUser = (userId) => api.delete(`api/users/${userId}`);
+export const updateUserName = (userId, name) => api.put(`api/users/update-name/${userId}`, { name });
 
 // 👉 Section API
 export const createSection = (data) => api.post("api/sections/create", data);
