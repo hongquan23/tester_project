@@ -11,6 +11,7 @@ from api.routes import (
     writing,
     speaking,
     chatbot,
+    flashcard,
 )
 
 api_router = APIRouter()
@@ -24,6 +25,7 @@ api_router.include_router(reading.router, prefix="/reading", tags=["Reading"])
 api_router.include_router(writing.router, prefix="/writing", tags=["Writing"])
 api_router.include_router(speaking.router, prefix="/speaking", tags=["Speaking"])
 api_router.include_router(chatbot.router, prefix="/chatbot", tags=["Chatbot"])
+api_router.include_router(flashcard.router, prefix="/flashcards", tags=["Flashcard"])
 
 
-print("API router initialized with routes: auth, users, user_attempt, sections, listening, reading, writing, speaking, chatbot")
+print("API router initialized with routes: auth, users, user_attempt, sections, listening, reading, writing, speaking, chatbot, flashcard")

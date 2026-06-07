@@ -12,6 +12,7 @@ from models import (
     ReadingQuestion,
     WritingQuestion,
     SpeakingQuestion,
+    Flashcard,
 )
 
 
