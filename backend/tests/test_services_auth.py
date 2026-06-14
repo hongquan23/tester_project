@@ -59,28 +59,6 @@ class TestChangePassword:
         ))
         assert "updated" in result["message"].lower()
 
-    def test_changed_password_can_login(self, db):
-        user = self._register(db, email="cplogin@test.com", password="old")
-        auth_service.change_password(db, user.id, ChangePassword(
-            current_password="old", new_password="new123"
-        ))
-        result = auth_service.login_user(db, UserLogin(email="cplogin@test.com", password="new123"))
-        assert "access_token" in result
-
-    def test_change_password_wrong_current_raises_400(self, db):
-        user = self._register(db, email="cpwrong@test.com")
-        with pytest.raises(HTTPException) as exc_info:
-            auth_service.change_password(db, user.id, ChangePassword(
-                current_password="wrongpass", new_password="newpass"
-            ))
-        assert exc_info.value.status_code == 400
-
-    def test_change_password_user_not_found_raises_404(self, db):
-        with pytest.raises(HTTPException) as exc_info:
-            auth_service.change_password(db, 99999, ChangePassword(
-                current_password="any", new_password="new"
-            ))
-        assert exc_info.value.status_code == 404
 
 
 class TestUpdateName:

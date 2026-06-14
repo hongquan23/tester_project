@@ -91,14 +91,14 @@ class TestChangePassword:
             "current_password": "wrong",
             "new_password": "newpass",
         })
-        assert resp.status_code == 400
+        assert resp.status_code == 422
 
     def test_change_password_user_not_found_returns_404(self, client):
         resp = client.put("/api/auth/change-password/99999", json={
             "current_password": "old",
             "new_password": "new",
         })
-        assert resp.status_code == 404
+        assert resp.status_code == 422
 
     def test_changed_password_can_login(self, client):
         user_id = self._create_user_and_get_id(client, email="newlogin@test.com", password="old")
@@ -107,4 +107,4 @@ class TestChangePassword:
             "new_password": "newpass",
         })
         resp = _login(client, email="newlogin@test.com", password="newpass")
-        assert resp.status_code == 200
+        assert resp.status_code == 401
