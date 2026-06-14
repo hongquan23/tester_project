@@ -12,6 +12,8 @@ import ContestPage from './ContestPage';
 import Course from './Course';
 import History from './History';
 import ChatBot from './ChatBot';
+import Flashcard from './Flashcard';
+import HighlightTranslate from './HighlightTranslate';
 import {
   getSpeakingTests, getWritingTests, getListeningTests, getReadingTests,
   getWritingBySection, getSpeakingBySection, getListeningBySection, getReadingBySection,
@@ -260,6 +262,7 @@ useEffect(() => {
   else if (path.endsWith("/contest")) setActiveView("ContestPage");
   else if (path.endsWith("/course")) setActiveView("course");
   else if (path.endsWith("/history")) setActiveView("history");
+  else if (path.endsWith("/flashcard")) setActiveView("flashcard");
 
 }, [location.pathname]);
 
@@ -593,6 +596,11 @@ const handleCourseClick = () => {
 const handleHistoryClick = () => {
   setActiveView("history");
   navigate("/member/history");
+};
+
+const handleFlashcardClick = () => {
+  setActiveView("flashcard");
+  navigate("/member/flashcard");
 };
 
   const handleTestClick = (test) => {
@@ -2128,6 +2136,7 @@ const renderQuestionResult = () => {
         handleContestClick={handleContestClick}
         handleCourseClick={handleCourseClick}
         handleHistoryClick={handleHistoryClick}
+        handleFlashcardClick={handleFlashcardClick}
         weakAreas={weakAreas}
       />
     );
@@ -2198,12 +2207,22 @@ const renderQuestionResult = () => {
     viewContent = <ContestPage currentUser={currentUser} navigate={navigate} />;
   } else if (activeView === 'course') {
     viewContent = <Course navigate={navigate} />;
+  } else if (activeView === 'flashcard') {
+    viewContent = (
+      <Flashcard
+        currentUser={currentUser}
+        onBack={() => { setActiveView("dashboard"); navigate("/member/dashboard"); }}
+      />
+    );
   }
+
+  const userId = localStorage.getItem("user_id");
 
   return (
     <>
       {viewContent}
       <ChatBot currentUser={currentUser} weakAreas={weakAreas} />
+      <HighlightTranslate userId={userId} />
     </>
   );
 };

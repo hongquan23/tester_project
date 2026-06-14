@@ -55,7 +55,7 @@ const Dashboard = ({
   setShowUserMenu, handleSkillClick, handleLogout, hoveredSkill,
   setHoveredSkill, hoveredCard, setHoveredCard, allTests, handleTestClick, currentUser,
   loadingUser, handleProfileClick, handleContestClick, handleCourseClick, handleHistoryClick,
-  weakAreas,
+  handleFlashcardClick, weakAreas,
 }) => {
   const [recHovered, setRecHovered] = useState(null);
   const [showAll, setShowAll] = useState(false);
@@ -118,6 +118,12 @@ const Dashboard = ({
               className="hover:text-orange-600 cursor-pointer transition-colors"
             >
               Các khóa học
+            </span>
+            <span
+              onClick={handleFlashcardClick}
+              className="hover:text-orange-600 cursor-pointer transition-colors"
+            >
+              Flashcard
             </span>
           </nav>
 
@@ -219,9 +225,18 @@ const Dashboard = ({
                                     rounded-xl transition-all duration-200
                                     flex items-center gap-3">
 
-                   
-
                     Lịch sử bài làm
+                  </button>
+
+                  <button
+                    onClick={handleFlashcardClick}
+                    className="group w-full text-left px-3 py-2.5
+                                    text-sm font-medium text-slate-700
+                                    hover:bg-orange-50
+                                    hover:text-orange-600
+                                    rounded-xl transition-all duration-200
+                                    flex items-center gap-3">
+                    Flashcard
                   </button>
 
                   <div className="h-px bg-slate-200 my-2 mx-2" />

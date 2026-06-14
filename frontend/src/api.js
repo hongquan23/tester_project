@@ -93,4 +93,13 @@ export const getSessionDetail = (userId, sectionId, attemptedAt) =>
   });
 export const getWeakAreas = (userId) => api.get(`api/user-attempts/user/${userId}/weak-areas`);
 
+// Flashcard
+export const translateWord = (data) => api.post("api/flashcards/translate", data);
+export const createFlashcard = (data) => api.post("api/flashcards/", data);
+export const getFlashcards = (userId) => api.get(`api/flashcards/user/${userId}`);
+export const getDueFlashcards = (userId) => api.get(`api/flashcards/user/${userId}/due`);
+export const markFlashcardKnown = (cardId) => api.patch(`api/flashcards/${cardId}/known`);
+export const markFlashcardUnknown = (cardId) => api.patch(`api/flashcards/${cardId}/unknown`);
+export const deleteFlashcard = (cardId) => api.delete(`api/flashcards/${cardId}`);
+
 export default api;
