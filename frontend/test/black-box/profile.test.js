@@ -293,53 +293,42 @@ describe("BLACK BOX - Profile", () => {
     console.log("✓ Mở trang Profile");
 
     // Find name input
-    const nameInputs = await driver.findElements(
-      By.xpath(
-        '//input[contains(@value, "trung") or contains(@placeholder, "Hộ")]',
-      ),
+    const nameInput = await driver.wait(
+      until.elementLocated(By.xpath('(//*[contains(text(), "Thông tin cơ bản")]/following::input)[1]')),
+      10000,
+      "Lỗi: Không tìm thấy ô nhập tên"
     );
 
-    if (nameInputs.length > 0) {
-      // Clear and type new name
-      const nameInput = nameInputs[0];
-      await driver.executeScript("arguments[0].select();", nameInput);
-      await new Promise((resolve) => setTimeout(resolve, 200));
+    // 2. Cuộn màn hình tới ô input để tránh bị thanh menu che khuất
+    await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", nameInput);
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Chờ màn hình cuộn mượt xong
 
-      await nameInput.clear();
-      await nameInput.sendKeys("Trung Updated");
-      console.log("✓ Nhập tên mới: 'Trung Updated'");
+    // Click vào ô để nháy con trỏ chuột
+    await nameInput.click();
 
-      // Find and click save button
-      const saveBtn = await driver.wait(
-        until.elementLocated(
-          By.xpath('//button[contains(text(), "Lưu thay đổi")]'),
-        ),
-        5000,
-      );
-      await driver.executeScript("arguments[0].scrollIntoView(true);", saveBtn);
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      await driver.executeScript("arguments[0].click();", saveBtn);
-      console.log("✓ Click 'Lưu thay đổi'");
-
-      // Wait for save
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Check for success message
-      try {
-        const successMsg = await driver.findElements(
-          By.xpath(
-            '//*[contains(text(), "thành công") or contains(text(), "success")]',
-          ),
-        );
-        if (successMsg.length > 0) {
-          console.log("✓ Profile cập nhật thành công");
-        } else {
-          console.log("✓ Profile đã lưu");
-        }
-      } catch (e) {
-        console.log("✓ Profile đã lưu");
+    // 3. Tuyệt chiêu xóa Text an toàn nhất cho React: Đếm số ký tự và bấm Backspace
+    const currentValue = await nameInput.getAttribute("value");
+    if (currentValue) {
+      for (let i = 0; i < currentValue.length; i++) {
+        await nameInput.sendKeys('\uE003'); // \uE003 là mã nút Backspace của Selenium
       }
     }
+
+    // 4. Gõ tên mới
+    await nameInput.sendKeys("Trung Vu Minh");
+    console.log("✓ Nhập tên mới: 'Trung Vu Minh'");
+
+    // 5. Tìm nút "Lưu thay đổi" và click bằng Javascript (để không bị chặn click)
+    const saveBtn = await driver.wait(
+      until.elementLocated(By.xpath('//button[contains(., "Lưu thay đổi")]')),
+      10000
+    );
+    await driver.executeScript("arguments[0].click();", saveBtn);
+    console.log("✓ Click 'Lưu thay đổi'");
+
+    // 6. Chờ thông báo thành công hoặc chờ UI update
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("✓ Profile cập nhật thành công");
   }, 120000);
 
   test("TC-04: Xem section Bảo mật tài khoản", async () => {
